@@ -4,8 +4,7 @@
  * src/container/App.js accordingly.
  */
 import { 
-  SORT_ITEMS,
-  FILTER_ITEMS
+  SORT_ITEMS
 } from 'actions/const'
 
 const initialState = {
@@ -17,22 +16,7 @@ function reducer(state = initialState, action) {
   const nextState = Object.assign({}, state)
 
   switch (action.type) {
-    case FILTER_ITEMS: {
-      nextState.currentFilter = action.payload
-      return nextState
-    }
-    case SORT_ITEMS: {
-		nextState.items.sort(function(card1, card2) {
-		  if (action.payload === 'asc') {
-			return card2.title < card1.title
-		  }
-		  return card2.title > card1.title
-		})
-		// just have to trigger state change
-		nextState.currentFilter = null
-		console.info(nextState);
-      return nextState
-    }
+    
     default: return nextState
   }
 }

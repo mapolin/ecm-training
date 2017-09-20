@@ -34,16 +34,9 @@ class App extends Component {
   }
   
   changeSort(event) {
-    this.state.cards.sort(function(card1, card2) {
-      if (event.target.value === 'asc') {
-        return card2.title < card1.title
-      }
-      return card2.title > card1.title
-    })
-    // just have to trigger state change
-    this.setState({
-      currentFilter: null
-    })
+	const { actions } = this.props;
+
+    actions.sortItems(event.target.value);
   }
 
   render() {
