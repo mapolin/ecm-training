@@ -34,8 +34,9 @@ class App extends Component {
   }
   
   changeSort(event) {
-	const { actions } = this.props;
+    const { actions } = this.props;
 
+    actions.filterItems('');
     actions.sortItems(event.target.value);
   }
 
@@ -47,7 +48,7 @@ class App extends Component {
 
     return (
       <div>
-        <Filter cards={cards.items} changeState={this.changeColor.bind(this)} currentFilter={this.state.currentFilter}/>
+        <Filter cards={cards.items} changeState={this.changeColor.bind(this)} currentFilter={cards.currentFilter}/>
         <Sort changeState={this.changeSort.bind(this)}/>
       
         {

@@ -22,15 +22,13 @@ function reducer(state = initialState, action) {
       return nextState
     }
     case SORT_ITEMS: {
-		nextState.items.sort(function(card1, card2) {
-		  if (action.payload === 'asc') {
-			return card2.title < card1.title
-		  }
-		  return card2.title > card1.title
-		})
-		// just have to trigger state change
-		nextState.currentFilter = null
-		console.info(nextState);
+  		nextState.items.sort(function(card1, card2) {
+  		  if (action.payload === 'asc') {
+  		    return card2.title < card1.title
+  		  }
+  		  return card2.title > card1.title
+  		})
+
       return nextState
     }
     default: return nextState
