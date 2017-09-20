@@ -79,7 +79,7 @@ function mapStateToProps(state) { // eslint-disable-line no-unused-vars
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
-  const actions = {};
+  const actions = { sortItems };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }
