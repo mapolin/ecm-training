@@ -10,13 +10,56 @@ import React, {
 } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {} from '../actions/';
-import Main from '../components/App';
+import {
+  sortItems
+} from '../actions/';
 /* Populated by react-webpack-redux:reducer */
+
+import Card from '../components/Card/Card';
+import Filter from '../components/Filter/Filter';
+import Sort from '../components/Sort/Sort';
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  changeColor(event) {
+    this.setState({
+      currentFilter: event.target.value
+    })
+  }
+  
+  changeSort(event) {
+    this.state.cards.sort(function(card1, card2) {
+      if (event.target.value === 'asc') {
+        return card2.title < card1.title
+      }
+      return card2.title > card1.title
+    })
+    // just have to trigger state change
+    this.setState({
+      currentFilter: null
+    })
+  }
+
   render() {
     const { actions } = this.props;
-    return <Main actions={actions} />;
+    
+    return (
+      <div>
+        <Filter cards={this.state.cards} changeState={this.changeColor.bind(this)} currentFilter={this.state.currentFilter}/>
+        <Sort changeState={this.changeSort.bind(this)}/>
+      
+        {
+          this.state.cards.map(card => {
+            if (!this.state.currentFilter || this.state.currentFilter === card.color) {
+              return <Card title={card.title} description={card.description} color={card.color}/>
+            }
+          })
+        }
+      </div>
+    )
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -29,7 +72,9 @@ App.propTypes = {
 };
 function mapStateToProps(state) { // eslint-disable-line no-unused-vars
   /* Populated by react-webpack-redux:reducer */
-  const props = {};
+  const props = {
+    cards: state.cards
+  };
   return props;
 }
 function mapDispatchToProps(dispatch) {

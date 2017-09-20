@@ -9,7 +9,10 @@
  */
 /* Populated by react-webpack-redux:reducer */
 import { combineReducers } from 'redux';
+import sort from './sort'
 
-const reducers = {};
+const reducers = {
+  cards: sort
+};
 const combined = combineReducers(reducers);
 module.exports = combined;
