@@ -4,7 +4,8 @@
  * src/container/App.js accordingly.
  */
 import { 
-  SORT_ITEMS
+  SORT_ITEMS,
+  FILTER_ITEMS
 } from 'actions/const'
 
 const initialState = {
@@ -16,7 +17,12 @@ function reducer(state = initialState, action) {
   const nextState = Object.assign({}, state)
 
   switch (action.type) {
-    
+    case FILTER_ITEMS: {
+      return nextState
+    }
+    case SORT_ITEMS: {
+      return nextState
+    }
     default: return nextState
   }
 }
