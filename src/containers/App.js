@@ -11,7 +11,8 @@ import React, {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
-  sortItems
+  sortItems,
+  filterItems
 } from '../actions/';
 /* Populated by react-webpack-redux:reducer */
 
@@ -27,9 +28,9 @@ class App extends Component {
   }
   
   changeColor(event) {
-    this.setState({
-      currentFilter: event.target.value
-    })
+    const { actions } = this.props;
+
+    actions.filterItems(event.target.value);
   }
   
   changeSort(event) {
@@ -46,7 +47,10 @@ class App extends Component {
   }
 
   render() {
-    const { actions, cards } = this.props;
+    const {
+      actions,
+      cards
+    } = this.props;
 
     return (
       <div>
@@ -55,7 +59,7 @@ class App extends Component {
       
         {
           cards.items.map(card => {
-            if (!this.state.currentFilter || this.state.currentFilter === card.color) {
+            if (!cards.currentFilter || cards.currentFilter === card.color) {
               return <Card title={card.title} description={card.description} color={card.color}/>
             }
           })
@@ -86,7 +90,7 @@ function mapStateToProps(state) { // eslint-disable-line no-unused-vars
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
-  const actions = { sortItems };
+  const actions = { sortItems, filterItems };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }

@@ -18,6 +18,7 @@ function reducer(state = initialState, action) {
 
   switch (action.type) {
     case FILTER_ITEMS: {
+      nextState.currentFilter = action.payload
       return nextState
     }
     case SORT_ITEMS: {

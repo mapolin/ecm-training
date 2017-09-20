@@ -7,9 +7,11 @@ import {action1, action2} from '../actions/'
 */
 /* Populated by react-webpack-redux:action */
 import sortItems from './sortItems';
+import filterItems from './filterItems';
 
 const actions = {
-  sortItems
+  sortItems,
+  filterItems
 };
 
 module.exports = actions;
