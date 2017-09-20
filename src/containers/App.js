@@ -22,6 +22,8 @@ import Sort from '../components/Sort/Sort';
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {}
   }
   
   changeColor(event) {
@@ -44,15 +46,15 @@ class App extends Component {
   }
 
   render() {
-    const { actions } = this.props;
-    
+    const { actions, cards } = this.props;
+
     return (
       <div>
-        <Filter cards={this.state.cards} changeState={this.changeColor.bind(this)} currentFilter={this.state.currentFilter}/>
+        <Filter cards={cards.items} changeState={this.changeColor.bind(this)} currentFilter={this.state.currentFilter}/>
         <Sort changeState={this.changeSort.bind(this)}/>
       
         {
-          this.state.cards.map(card => {
+          cards.items.map(card => {
             if (!this.state.currentFilter || this.state.currentFilter === card.color) {
               return <Card title={card.title} description={card.description} color={card.color}/>
             }
@@ -67,8 +69,13 @@ class App extends Component {
  * HINT: if you adjust the initial type of your reducer, you will also have to
  *       adjust it here.
  */
+
+App.defaultProps = {
+  cards: []
+};
 App.propTypes = {
-  actions: PropTypes.shape({})
+  actions: PropTypes.shape({}),
+  cards: PropTypes.shape({})
 };
 function mapStateToProps(state) { // eslint-disable-line no-unused-vars
   /* Populated by react-webpack-redux:reducer */
