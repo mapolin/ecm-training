@@ -16,30 +16,10 @@ import {
 } from '../actions/';
 /* Populated by react-webpack-redux:reducer */
 
-import Card from '../components/Card/Card';
-import Filter from '../components/Filter/Filter';
-import Sort from '../components/Sort/Sort';
+import { withRouter } from 'react-router-dom';
+import RouteList from '../routes';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {}
-  }
-  
-  changeColor(event) {
-    const { actions } = this.props;
-
-    actions.filterItems(event.target.value);
-  }
-  
-  changeSort(event) {
-    const { actions } = this.props;
-
-    actions.filterItems('');
-    actions.sortItems(event.target.value);
-  }
-
   render() {
     const {
       actions,
@@ -47,18 +27,7 @@ class App extends Component {
     } = this.props;
 
     return (
-      <div>
-        <Filter cards={cards.items} changeState={this.changeColor.bind(this)} currentFilter={cards.currentFilter}/>
-        <Sort changeState={this.changeSort.bind(this)}/>
-      
-        {
-          cards.items.map(card => {
-            if (!cards.currentFilter || cards.currentFilter === card.color) {
-              return <Card title={card.title} description={card.description} color={card.color}/>
-            }
-          })
-        }
-      </div>
+      <RouteList />
     )
   }
 }
@@ -88,4 +57,4 @@ function mapDispatchToProps(dispatch) {
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

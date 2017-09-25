@@ -6,12 +6,23 @@ import App from './containers/App';
 import configureStore from './stores';
 import initialStore from './initialStore';
 
-const store = configureStore(initialStore);
+// Router
+import createHistory from 'history/createBrowserHistory';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+
+// Create the browser history
+const history = createHistory()
+// Build the history middleware
+const middleware = routerMiddleware(history)
+// Create the react store and add the middlewares
+const store = configureStore(initialStore, [middleware]);
 
 ReactDOM.render(
   <AppContainer>
     <Provider store={store}>
-      <App />
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
     </Provider>
   </AppContainer>,
   document.getElementById('app')
@@ -24,7 +35,9 @@ if (module.hot) {
     ReactDOM.render(
       <AppContainer>
         <Provider store={store}>
-          <NextApp />
+          <ConnectedRouter history={history}>
+            <NextApp />
+          </ConnectedRouter>
         </Provider>
       </AppContainer>,
       document.getElementById('app')

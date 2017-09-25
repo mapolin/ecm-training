@@ -10,9 +10,11 @@
 /* Populated by react-webpack-redux:reducer */
 import { combineReducers } from 'redux';
 import cards from './cards'
+import router from './router';
 
 const reducers = {
-  cards
+  cards,
+  router
 };
 const combined = combineReducers(reducers);
 module.exports = combined;

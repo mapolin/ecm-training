@@ -22,6 +22,7 @@ function reducer(state = initialState, action) {
       return nextState
     }
     case SORT_ITEMS: {
+      nextState.currentSort = action.payload
   		nextState.items.sort(function(card1, card2) {
   		  if (action.payload === 'asc') {
   		    return card2.title < card1.title

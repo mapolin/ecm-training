@@ -3,14 +3,11 @@ import React from 'react';
 class Filter extends React.Component {
 	render() {
 		return (
-			<select onChange={this.props.changeState}>
-				<option value="" selected={this.props.currentFilter ? '' : 'selected'}>All</option>
+			<select value={this.props.currentFilter} onChange={this.props.changeState}>
+				<option value="all">All</option>
 				{
-					this.props.cards.map(card => {
-						if(this.props.currentFilter === card.color) {
-							return <option value={card.color} selected="selected">{card.color}</option>
-						}
-						return <option value={card.color}>{card.color}</option>
+					this.props.cards.map((card, index) => {
+						return <option key={index} value={card.color}>{card.color}</option>
 					})
 				}
 			</select>

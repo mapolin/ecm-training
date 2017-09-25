@@ -1,5 +1,7 @@
 export default {
   cards: {
+    currentFilter: 'all',
+    currentSort: 'asc',
     items: [
       {
         title: 'Card title 1',
