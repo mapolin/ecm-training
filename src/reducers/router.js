@@ -1,3 +1,3 @@
-import { routerReducer } from 'react-router-redux';
+import { routerReducer } from 'react-router-redux'
 
-module.exports = routerReducer;
+module.exports = routerReducer

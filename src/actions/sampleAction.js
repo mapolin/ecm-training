@@ -1,8 +1,8 @@
-import { SORT_ITEMS } from './const'
+import { SAMPLE_ACTION } from './const'
 
 function action(data) {
   return {
-	  type: SORT_ITEMS,
+	  type: SAMPLE_ACTION,
 	  payload: data
 	}
 }

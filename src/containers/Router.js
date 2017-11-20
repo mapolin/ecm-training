@@ -8,18 +8,20 @@ import {
   sampleAction
 } from '../actions/'
 
-import PageWrapper from '../components/PageWrapper'
+import { withRouter } from 'react-router-dom'
+import RouteList from '../routes'
 import '../components/app.css'
 
 class App extends Component {
   render() {
     return (
-      <PageWrapper />
+      <RouteList />
     )
   }
 }
 
-App.defaultProps = {}
+App.defaultProps = {
+}
 App.propTypes = {
   actions: PropTypes.shape({})
 }
@@ -32,4 +34,4 @@ function mapDispatchToProps(dispatch) {
   const actionMap = { actions: bindActionCreators(actions, dispatch) }
   return actionMap
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

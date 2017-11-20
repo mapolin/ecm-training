@@ -6,12 +6,10 @@ Allows to import actions like so:
 import {action1, action2} from '../actions/'
 */
 /* Populated by react-webpack-redux:action */
-import sortItems from './sortItems';
-import filterItems from './filterItems';
+import sampleAction from './sampleAction'
 
 const actions = {
-  sortItems,
-  filterItems
-};
+  sampleAction
+}
 
-module.exports = actions;
+module.exports = actions

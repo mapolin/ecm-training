@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router';
 
-import ListPage from '../containers/ListPage';
+import PageWrapper from '../components/PageWrapper'
 
 class RouteList extends Component {
   render() {
     return (
       <Switch>
-        <Route path='/:filter' component={ListPage} />
-        <Route path='/' component={ListPage} />
+        <Route path='/' component={PageWrapper} />
       </Switch>
     )
   }
