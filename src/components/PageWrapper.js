@@ -88,7 +88,9 @@ class PageWrapper extends React.Component {
 	}
 
 	deleteItem(index) {
-		alert(index);
+		this.state.cards.splice(index, 1);
+
+		this.setState({cards:this.state.cards})
 	}
 
 	render() {

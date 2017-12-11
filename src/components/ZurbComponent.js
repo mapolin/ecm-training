@@ -7,6 +7,7 @@ class ZurbComponent extends React.Component {
 
   constructor(props) {
     super(props);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   deleteItem() {
