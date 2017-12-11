@@ -1,9 +1,16 @@
 import React from 'react';
 
+
+import DeleteComponent from './DeleteComponent'
+
 class ZurbComponent extends React.Component {
 
   constructor(props) {
     super(props);
+  }
+
+  deleteItem() {
+    this.props.deleteItem(this.props.index);
   }
 
   render() {
@@ -18,6 +25,7 @@ class ZurbComponent extends React.Component {
     <h3 className="lead">{this.props.title}</h3>
     <p>{this.props.description}</p>
   </div>
+  <DeleteComponent deleteItem={this.deleteItem} />
 </div>
 		)
   }
