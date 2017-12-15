@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router';
 
-import PageWrapper from '../components/PageWrapper'
+import App from '../containers/App';
 
 class RouteList extends Component {
   render() {
     return (
       <Switch>
-        <Route path='/' component={PageWrapper} />
+        <Route exact path="/filter/:type" component={App} />
+        <Route exact path="/sort/:by" component={App} />
+        <Route path="/" component={App} />
       </Switch>
-    )
+    );
   }
 }
 

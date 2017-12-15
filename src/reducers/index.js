@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux'
-import sample from './sample'
-import router from './router'
+import { combineReducers } from "redux";
+import sample from "./sample";
+import router from "./router";
 
 const reducers = {
-  sample,
+  cards: sample,
   router
-}
-const combined = combineReducers(reducers)
-module.exports = combined
+};
+const combined = combineReducers(reducers);
+module.exports = combined;
